@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shreyas M | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #E7ECEE;
+    --paper-raised: #FFFFFF;
+    --ink: #14191B;
+    --ink-soft: #56636A;
+    --line: #CBD5D8;
+    --line-strong: #14191B;
+    --navy: #0E2430;
+    --navy-line: rgba(237,236,228,0.14);
+    --navy-ink: #EFEEE4;
+    --navy-ink-soft: #A9B7B9;
+    --amber: #CC7A22;
+    --amber-tint: #F1DFC2;
+    --teal: #2E6E68;
+    --teal-tint: #DCE9E4;
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --paper: #14171A;
+      --paper-raised: #1B1F22;
+      --ink: #EDECE4;
+      --ink-soft: #A9AFA6;
+      --line: #33383B;
+      --line-strong: #EDECE4;
+      --navy: #0A1620;
+      --navy-line: rgba(237,236,228,0.14);
+      --navy-ink: #F2F1E9;
+      --navy-ink-soft: #9FB0B2;
+      --amber: #E3A34F;
+      --amber-tint: #2E2415;
+      --teal: #6FB0A6;
+      --teal-tint: #172624;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #14171A;
+    --paper-raised: #1B1F22;
+    --ink: #EDECE4;
+    --ink-soft: #A9AFA6;
+    --line: #33383B;
+    --line-strong: #EDECE4;
+    --navy: #0A1620;
+    --navy-line: rgba(237,236,228,0.14);
+    --navy-ink: #F2F1E9;
+    --navy-ink-soft: #9FB0B2;
+    --amber: #E3A34F;
+    --amber-tint: #2E2415;
+    --teal: #6FB0A6;
+    --teal-tint: #172624;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--amber-tint); color: var(--ink); }
+
+  h1, h2, h3 {
+    font-family: 'Archivo Expanded', 'Inter', sans-serif;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Header ---------- */
+  header.site {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  .site-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+  .mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Archivo Expanded', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .mark .box {
+    width: 26px; height: 26px;
+    background: var(--amber);
+    color: #1B1305;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11.5px;
+    font-weight: 700;
+  }
+  nav.primary { display: flex; gap: 26px; }
+  nav.primary a {
+    text-decoration: none;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  nav.primary a:hover { color: var(--ink); border-color: var(--amber); }
+  @media (max-width: 640px) {
+    nav.primary { display: none; }
+  }
+
+  /* ---------- Hero (dark instrument panel) ---------- */
+  .hero {
+    background: var(--navy);
+    color: var(--navy-ink);
+    position: relative;
+    overflow: hidden;
+    padding: 68px 0 0;
+  }
+  .hero-schematic {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: start;
+  }
+  .kicker {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--amber);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: clamp(42px, 6vw, 64px);
+    font-weight: 800;
+    line-height: 0.98;
+    color: var(--navy-ink);
+  }
+  .hero .role {
+    font-size: clamp(18px, 2.4vw, 22px);
+    color: var(--navy-ink-soft);
+    margin-top: 12px;
+    font-weight: 500;
+  }
+  .hero .bio {
+    max-width: 62ch;
+    margin-top: 22px;
+    font-size: 16px;
+    color: var(--navy-ink-soft);
+  }
+  .hero-contact {
+    text-align: right;
+    font-size: 13px;
+    color: var(--navy-ink-soft);
+    white-space: nowrap;
+  }
+  .hero-contact div { margin-bottom: 6px; }
+  .hero-contact a { text-decoration: none; }
+  .hero-contact a:hover { color: var(--amber); }
+  @media (max-width: 640px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-contact { text-align: left; margin-top: 20px; }
+  }
+
+  /* ---------- Metrics readout (on dark panel) ---------- */
+  .readout {
+    position: relative;
+    z-index: 1;
+    margin-top: 52px;
+    border-top: 1px solid var(--navy-line);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .readout .cell {
+    padding: 24px 22px 28px;
+    border-right: 1px solid var(--navy-line);
+  }
+  .readout .cell:last-child { border-right: none; }
+  .readout .num {
+    font-family: 'Archivo Expanded', sans-serif;
+    font-weight: 700;
+    font-size: clamp(24px, 3vw, 32px);
+  }
+  .readout .cell:nth-child(odd) .num { color: var(--amber); }
+  .readout .cell:nth-child(even) .num { color: #7FC4B8; }
+  .readout .label {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: var(--navy-ink-soft);
+    line-height: 1.4;
+  }
+  @media (max-width: 700px) {
+    .readout { grid-template-columns: repeat(2, 1fr); }
+    .readout .cell:nth-child(2) { border-right: none; }
+    .readout .cell:nth-child(2n) { border-right: none; }
+    .readout .cell:nth-child(odd) { border-right: 1px solid var(--navy-line); }
+  }
+
+  /* ---------- Section frame ---------- */
+  section { padding: 72px 0; }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--line-strong);
+    padding-bottom: 14px;
+    margin-bottom: 36px;
+  }
+  .section-head .tag {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    font-weight: 700;
+  }
+  .section-head h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 4px;
+  }
+  .section-head .idx {
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- Experience ---------- */
+  .role-block {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 28px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .role-block:last-child { border-bottom: none; }
+  .role-meta .company {
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .role-meta .title {
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  .role-meta .dates {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 11.5px;
+    color: var(--teal);
+    font-weight: 700;
+    background: var(--teal-tint);
+    padding: 4px 8px;
+  }
+  ul.achieve {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  ul.achieve li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 14px;
+    font-size: 14.5px;
+    color: var(--ink);
+  }
+  ul.achieve li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--amber);
+    font-weight: 700;
+  }
+  ul.achieve li:last-child { margin-bottom: 0; }
+  ul.achieve.compact li { font-size: 14px; color: var(--ink-soft); }
+
+  @media (max-width: 640px) {
+    .role-block { grid-template-columns: 1fr; gap: 10px; }
+  }
+
+  /* ---------- Skills schedule ---------- */
+  .schedule {
+    border-top: 2px solid var(--line-strong);
+  }
+  .schedule-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    border-bottom: 1px solid var(--line);
+    padding: 20px 0;
+    gap: 20px;
+  }
+  .schedule-row .cat {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--teal);
+    font-weight: 700;
+    padding-top: 3px;
+  }
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+  }
+  .chip {
+    font-size: 13px;
+    padding: 6px 12px;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+  .schedule-row:first-of-type .chip { border-left: 2px solid var(--amber); }
+  .schedule-row:last-of-type .chip { border-left: 2px solid var(--teal); }
+  @media (max-width: 640px) {
+    .schedule-row { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  /* ---------- Certification ---------- */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 2px solid var(--line-strong);
+    border-left: 1px solid var(--line);
+  }
+  .cert-card {
+    background: var(--paper-raised);
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 22px 22px 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 148px;
+  }
+  .cert-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .cert-idx {
+    font-size: 11px;
+    color: #FFFFFF;
+    background: var(--teal);
+    padding: 2px 6px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    flex-shrink: 0;
+  }
+  .cert-name {
+    font-weight: 700;
+    font-size: 14.5px;
+    line-height: 1.35;
+  }
+  .cert-meta {
+    color: var(--ink-soft);
+    font-size: 12.5px;
+    margin-top: 8px;
+  }
+  .cert-foot {
+    margin-top: auto;
+    padding-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .cert-cred {
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    word-break: break-all;
+    max-width: 62%;
+  }
+  .cert-link {
+    font-size: 12px;
+    text-decoration: none;
+    color: var(--amber);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .cert-link:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .cert-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--navy);
+    color: var(--navy-ink);
+    padding: 48px 0 56px;
+  }
+  .footer-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .footer-cta h3 {
+    font-size: 24px;
+    font-weight: 700;
+    max-width: 20ch;
+    color: var(--navy-ink);
+  }
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+    text-align: right;
+    color: var(--navy-ink-soft);
+  }
+  .footer-links a { text-decoration: none; }
+  .footer-links a:hover { color: var(--amber); }
+  .footer-note {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--navy-line);
+    font-size: 12px;
+    color: var(--navy-ink-soft);
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="site-inner">
+    <div class="mark"><span class="box">SM</span> Shreyas M</div>
+    <nav class="primary">
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#certification">Certification</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <svg class="hero-schematic" viewBox="0 0 1000 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#3E5560" stroke-width="1" fill="none">
+      <line x1="120" y1="60" x2="380" y2="140"/>
+      <line x1="380" y1="140" x2="640" y2="70"/>
+      <line x1="380" y1="140" x2="330" y2="300"/>
+      <line x1="380" y1="140" x2="600" y2="260"/>
+      <line x1="640" y1="70" x2="880" y2="130"/>
+      <line x1="600" y1="260" x2="850" y2="330"/>
+      <line x1="600" y1="260" x2="480" y2="380"/>
+      <line x1="330" y1="300" x2="120" y2="360"/>
+    </g>
+    <g fill="#CC7A22">
+      <circle cx="380" cy="140" r="6"/>
+      <circle cx="600" cy="260" r="6"/>
+    </g>
+    <g fill="#4C7A72">
+      <circle cx="120" cy="60" r="3.5"/>
+      <circle cx="640" cy="70" r="3.5"/>
+      <circle cx="330" cy="300" r="3.5"/>
+      <circle cx="880" cy="130" r="3.5"/>
+      <circle cx="850" cy="330" r="3.5"/>
+      <circle cx="480" cy="380" r="3.5"/>
+      <circle cx="120" cy="360" r="3.5"/>
+    </g>
+  </svg>
+  <div class="wrap hero-inner">
+    <div class="hero-grid">
+      <div>
+        <div class="kicker">LEAN CONSULTANT — SUPPLY CHAIN &amp; OPERATIONS</div>
+        <h1>Shreyas M</h1>
+        <div class="role">Industrial engineer turning floor-level operations into measurable savings.</div>
+        <p class="bio">Analytical industrial engineer with 2+ years of consulting experience driving operational improvements across supply chain, inventory, and manufacturing floor processes. I work directly with the people running the process to design solutions that stick — inventory planning, S&amp;OP-aligned replenishment logic, root-cause analysis — and stay through implementation rather than handing off a report.</p>
+      </div>
+      <div class="hero-contact">
+        <div>+91 63622 27103</div>
+        <div><a href="mailto:shreyamgowda23@gmail.com">shreyamgowda23@gmail.com</a></div>
+        <div><a href="https://www.linkedin.com/in/shreyas-m-000148229/" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+      </div>
+    </div>
+
+    <div class="readout">
+      <div class="cell">
+        <div class="num">₹37.9 Cr</div>
+        <div class="label">Inventory reduction identified via freeze-stock rationalization</div>
+      </div>
+      <div class="cell">
+        <div class="num">₹12.59 Cr</div>
+        <div class="label">Depot freeze stock reduction delivered through demand forecasting</div>
+      </div>
+      <div class="cell">
+        <div class="num">₹29.83 Cr</div>
+        <div class="label">Slow-moving &amp; dead stock identified via ABC / root-cause analysis</div>
+      </div>
+      <div class="cell">
+        <div class="num">₹3.4 Cr</div>
+        <div class="label">Potential savings from hub-to-spoke network redesign</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section id="experience">
+    <div class="section-head">
+      <div>
+        <div class="tag">WORK HISTORY</div>
+        <h2>Experience</h2>
+      </div>
+      <div class="idx">01</div>
+    </div>
+
+    <div class="role-block">
+      <div class="role-meta">
+        <div class="company">Lean Consultant</div>
+        <div class="title">Supply Chain &amp; Operations</div>
+        <div class="dates">JUL 2024 — PRESENT</div>
+      </div>
+      <ul class="achieve">
+        <li>Led end-to-end supply chain transformation for one of India's largest lighting brands — translating ambiguous operational challenges across procurement, inventory, warehousing, and distribution into structured, data-driven solutions through requirements gathering and cross-functional stakeholder management.</li>
+        <li>Performed data analysis and business process reengineering to design inventory optimization models, identifying a potential inventory reduction of ₹37.9 Cr through freeze stock rationalization and inventory restructuring.</li>
+        <li>Delivered a ₹12.59 Cr reduction in depot freeze stock inventory through sales-based demand forecasting, data modeling, and replenishment optimization.</li>
+        <li>Designed a hub-to-spoke distribution network model, identifying a potential ₹3.4 Cr inventory reduction while improving SKU availability and logistics efficiency.</li>
+        <li>Conducted root cause analysis and ABC analysis on inventory data, identifying ₹29.83 Cr in slow-moving and dead stock, and developed data-backed liquidation and cost-reduction strategies.</li>
+        <li>Built automated inventory planning, procurement, stock-balancing, and replenishment dashboards and data pipelines using Excel, VBA, Power Query, SQL, and AppSheet to support KPI reporting and data-driven decision-making.</li>
+        <li>Developed warehouse capacity planning and network optimization models, including pallet optimization, CBM calculations, manpower planning, safety stock analysis, and storage utilization/gap analysis.</li>
+        <li>Implemented vendor and supplier performance monitoring through OTIF measurement and fill-rate tracking, supporting SAP-driven reporting and S&amp;OP alignment.</li>
+      </ul>
+    </div>
+
+    <div class="role-block">
+      <div class="role-meta">
+        <div class="company">TechnoHacks</div>
+        <div class="title">Data Analytics Intern — Remote</div>
+        <div class="dates">AUG 2023 — SEP 2023</div>
+      </div>
+      <ul class="achieve compact">
+        <li>Developed Power BI and Tableau dashboards for KPI monitoring and business performance tracking.</li>
+        <li>Performed data cleaning, trend analysis, and statistical reporting to support data-driven decision-making.</li>
+      </ul>
+    </div>
+
+    <div class="role-block">
+      <div class="role-meta">
+        <div class="company">SkillVertex</div>
+        <div class="title">Machine Learning Intern — Remote</div>
+        <div class="dates">JUL 2021 — AUG 2021</div>
+      </div>
+      <ul class="achieve compact">
+        <li>Built predictive analytics and regression models using Python; performed data preprocessing and feature engineering to support business requirements.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head">
+      <div>
+        <div class="tag">CAPABILITIES</div>
+        <h2>Skills &amp; Tools</h2>
+      </div>
+      <div class="idx">02</div>
+    </div>
+
+    <div class="schedule">
+      <div class="schedule-row">
+        <div class="cat">CORE AREAS</div>
+        <div class="chip-row">
+          <span class="chip">Business &amp; Requirements Analysis</span>
+          <span class="chip">Supply Chain &amp; Operations Analytics</span>
+          <span class="chip">Inventory Planning &amp; Optimization</span>
+          <span class="chip">Process Improvement &amp; Lean Management</span>
+          <span class="chip">KPI Development &amp; Performance Management</span>
+          <span class="chip">Root Cause Analysis</span>
+          <span class="chip">Process Mapping &amp; SOP Development</span>
+          <span class="chip">Stakeholder Management</span>
+          <span class="chip">Production &amp; Inventory Analytics</span>
+          <span class="chip">Procurement &amp; Vendor Analytics</span>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="cat">TOOLS &amp; PLATFORMS</div>
+        <div class="chip-row">
+          <span class="chip">SQL</span>
+          <span class="chip">Microsoft Excel</span>
+          <span class="chip">Power BI</span>
+          <span class="chip">Tableau</span>
+          <span class="chip">Looker Studio</span>
+          <span class="chip">Python</span>
+          <span class="chip">VBA</span>
+          <span class="chip">Power Query</span>
+          <span class="chip">AppSheet</span>
+          <span class="chip">SAP (ERP)</span>
+          <span class="chip">Dashboard Development</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certification">
+    <div class="section-head">
+      <div>
+        <div class="tag">CREDENTIALS</div>
+        <h2>Certification</h2>
+      </div>
+      <div class="idx">03</div>
+    </div>
+
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-top">
+          <div class="cert-name">Data Science Course: Complete Data Science Bootcamp</div>
+          <div class="cert-idx">C-01</div>
+        </div>
+        <div class="cert-meta">Udemy · Issued Oct 2023</div>
+        <div class="cert-foot">
+          <div class="cert-cred">UC-60e84f56-bfce-4f26-b7c7-904186082266</div>
+          <a class="cert-link" href="https://ude.my/UC-60e84f56-bfce-4f26-b7c7-904186082266" target="_blank" rel="noopener">Show ↗</a>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-top">
+          <div class="cert-name">SQL — MySQL for Data Analytics and Business Intelligence</div>
+          <div class="cert-idx">C-02</div>
+        </div>
+        <div class="cert-meta">Udemy · Issued Oct 2023</div>
+        <div class="cert-foot">
+          <div class="cert-cred">UC-81e04299-aadb-4f45-b374-9a29d8262c37</div>
+          <a class="cert-link" href="https://ude.my/UC-81e04299-aadb-4f45-b374-9a29d8262c37" target="_blank" rel="noopener">Show ↗</a>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-top">
+          <div class="cert-name">Lean Six Sigma — White Belt &amp; Yellow Belt</div>
+          <div class="cert-idx">C-03</div>
+        </div>
+        <div class="cert-meta">Udemy · Issued Sep 2023</div>
+        <div class="cert-foot">
+          <div class="cert-cred">UC-426f167c-68c4-462d-aa0b-f22618a015a7</div>
+          <a class="cert-link" href="https://ude.my/UC-426f167c-68c4-462d-aa0b-f22618a015a7" target="_blank" rel="noopener">Show ↗</a>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-top">
+          <div class="cert-name">Supply Chain Management A–Z: Operations &amp; Logistics Basics</div>
+          <div class="cert-idx">C-04</div>
+        </div>
+        <div class="cert-meta">Udemy · Issued Aug 2023</div>
+        <div class="cert-foot">
+          <div class="cert-cred">UC-df396847-07de-4164-a3c2-de7ccfeecc27</div>
+          <a class="cert-link" href="https://ude.my/UC-df396847-07de-4164-a3c2-de7ccfeecc27" target="_blank" rel="noopener">Show ↗</a>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-top">
+          <div class="cert-name">Supply Chain Analytics</div>
+          <div class="cert-idx">C-05</div>
+        </div>
+        <div class="cert-meta">NPTEL · Issued May 2023</div>
+        <div class="cert-foot">
+          <div class="cert-cred">NOC23MG16S33232143</div>
+          <a class="cert-link" href="https://nptel.ac.in/noc/E_Certificate/NPTEL23MG16S3323214304273792" target="_blank" rel="noopener">Show ↗</a>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-top">
+          <div class="cert-name">Machine Learning Internship</div>
+          <div class="cert-idx">C-06</div>
+        </div>
+        <div class="cert-meta">SkillVertex · Issued Jul 2021</div>
+        <div class="cert-foot">
+          <div class="cert-cred">Credential ID: 2000314</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-top">
+          <div class="cert-name">Machine Learning Program Training</div>
+          <div class="cert-idx">C-07</div>
+        </div>
+        <div class="cert-meta">SkillVertex · Issued Jun 2021</div>
+        <div class="cert-foot">
+          <div class="cert-cred">Credential ID: 2000314</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-top">
+          <div class="cert-name">PCB Design</div>
+          <div class="cert-idx">C-08</div>
+        </div>
+        <div class="cert-meta">INOVACT · Issued May 2021</div>
+        <div class="cert-foot">
+          <div class="cert-cred">&nbsp;</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-top">
+          <div class="cert-name">Fundamentals of Digital Marketing</div>
+          <div class="cert-idx">C-09</div>
+        </div>
+        <div class="cert-meta">INOVACT · Issued May 2021</div>
+        <div class="cert-foot">
+          <div class="cert-cred">&nbsp;</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-top">
+          <div class="cert-name">Hybrid and Electric Vehicles Webinar</div>
+          <div class="cert-idx">C-10</div>
+        </div>
+        <div class="cert-meta">INOVACT · Issued Apr 2021</div>
+        <div class="cert-foot">
+          <div class="cert-cred">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-cta">
+        <h3>Open to new operations &amp; supply chain engagements.</h3>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:shreyamgowda23@gmail.com">shreyamgowda23@gmail.com</a>
+        <a href="tel:+916362227103">+91 63622 27103</a>
+        <a href="https://www.linkedin.com/in/shreyas-m-000148229/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+    <div class="footer-note">Shreyas M — Lean Consultant, Supply Chain &amp; Operations.</div>
+  </div>
+</footer>
+
+</body>
+</html>
